@@ -1,0 +1,13 @@
+<form [formGroup]="myForm" #form="ngForm" (ngSubmit)="submitForm(myForm)">
+    <label for="name">Name</label>
+    <input type="text" formControlName="firstName">
+    <div *ngIf="myForm.get('firstName')?.hasError('required') && form.submitted" class='alert alert-danger'>firstName is required</div>
+
+    <div formGroupName="location">
+        <label for="name">Adresse</label>
+        <input type="text" formControlName="adresse">
+        <div *ngIf="myForm.get('location.adresse')?.hasError('required') && form.submitted" class='alert alert-danger'>Adresse is required</div>
+    </div>
+
+    <input [disabled]="!myForm.valid" type="submit" value="Save">
+</form>
